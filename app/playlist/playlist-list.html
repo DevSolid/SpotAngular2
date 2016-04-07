@@ -9,6 +9,11 @@
             </div>
         </div>
         <div class="row">
+            <button class="btn btn-primary" (click)="save()">Save</button>
+            <button class="btn btn-primary" (click)="load()">Load</button>
+
+        </div>
+        <div class="row">
             <div class="col-md-5">
                 <ul class="list-group">
                     <li *ngFor="#playlist of list; #i=index" class="list-group-item">

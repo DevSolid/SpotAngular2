@@ -4,12 +4,13 @@ import {APP_ROUTES} from './app.routes';
 import {NavbarComponent} from './navbar/navbar.component';
 import {LoggerService} from './blocks/logger.service';
 import {PlaylistService} from './playlist/playlist.service';
+import {SessionService} from './common/session.service';
 
 @Component({
     selector: 'main-app',
     templateUrl: 'app/app.html',
     directives: [RouterOutlet, NavbarComponent],
-    providers: [PlaylistService]
+    providers: [SessionService, PlaylistService]
 })
 @RouteConfig(APP_ROUTES)
 export class AppComponent {

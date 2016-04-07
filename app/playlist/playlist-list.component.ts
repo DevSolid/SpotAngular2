@@ -4,6 +4,8 @@ import { CORE_DIRECTIVES} from 'angular2/common';
 import { PlaylistService } from './playlist.service';
 import { PlaylistNewComponent } from './playlist-new.component';
 import { Playlist} from './../model/playlist.model';
+import { SessionService } from '../common/session.service';
+import {UserData} from '../model/userData.model';
 
 @Component({
     selector: 'playlist-list',
@@ -12,22 +14,31 @@ import { Playlist} from './../model/playlist.model';
 })
 export class PlaylistListComponent implements OnInit {
 
+    private userData: UserData;
     private list: Playlist[];
 
-    constructor(private _playlistService: PlaylistService) {
+    constructor(private _playlistService: PlaylistService,
+                private _sessionService: SessionService) {
         this.list = [];
     }
 
     ngOnInit() {
-        this.loadData();
-    }
-
-    loadData() {
-        this._playlistService.getAll().then(list => this.list = list);
+        this.userData = this._sessionService.getUserData();
+        this.list = this.userData.playlistList;
     }
 
     onCreatedNew(playlist: Playlist) {
         this.list.push(playlist);
+    }
+
+    save() {
+        this.userData.playlistList = this.list;
+        this._sessionService.setUserData(this.userData);
+    }
+
+    load() {
+        this.userData = this._sessionService.getUserData();
+        this.list = this.userData.playlistList;
     }
 
 }

@@ -1,5 +1,5 @@
 <form (ngSubmit)="save()" #todoForm="ngForm">
-    <label for="todo">To Do</label>
+    <label for="name">Name</label>
     <span [hidden]="name.valid" class="badge badge-warning">Required</span>
     <div class="form-inline">
         <input required [(ngModel)]="playlist.name" ngControl="name" #name="ngForm" id="name" type="text" class="form-control" size="50">
