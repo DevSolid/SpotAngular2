@@ -3,11 +3,13 @@ import {RouterOutlet, RouteConfig, RouteDefinition} from 'angular2/router';
 import {APP_ROUTES} from './app.routes';
 import {NavbarComponent} from './navbar/navbar.component';
 import {LoggerService} from './blocks/logger.service';
+import {PlaylistService} from './playlist/playlist.service';
 
 @Component({
     selector: 'main-app',
     templateUrl: 'app/app.html',
-    directives: [RouterOutlet, NavbarComponent]
+    directives: [RouterOutlet, NavbarComponent],
+    providers: [PlaylistService]
 })
 @RouteConfig(APP_ROUTES)
 export class AppComponent {

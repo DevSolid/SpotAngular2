@@ -8,8 +8,7 @@ import { Playlist} from './../model/playlist.model';
 @Component({
     selector: 'playlist-list',
     templateUrl: 'app/playlist/playlist-list.html',
-    directives: [CORE_DIRECTIVES, PlaylistNewComponent],
-    providers: [PlaylistService]
+    directives: [CORE_DIRECTIVES, PlaylistNewComponent]
 })
 export class PlaylistListComponent implements OnInit {
 
