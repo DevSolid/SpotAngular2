@@ -1,0 +1,8 @@
+<form (ngSubmit)="save()" #todoForm="ngForm">
+    <label for="todo">To Do</label>
+    <span [hidden]="name.valid" class="badge badge-warning">Required</span>
+    <div class="form-inline">
+        <input required [(ngModel)]="playlist.name" ngControl="name" #name="ngForm" id="todo" type="text" class="form-control" size="50">
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>
