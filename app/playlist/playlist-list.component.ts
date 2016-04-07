@@ -1,32 +1,30 @@
-import { Component } from 'angular2/core';
+import { OnInit, Component } from 'angular2/core';
 import { CORE_DIRECTIVES} from 'angular2/common';
 
+import { PlaylistService } from './playlist.service';
 import { PlaylistNewComponent } from './playlist-new.component';
 import { Playlist} from './../model/playlist.model';
-import { Track} from './../model/track.model';
 
 @Component({
     selector: 'playlist-list',
     templateUrl: 'app/playlist/playlist-list.html',
-    directives: [CORE_DIRECTIVES, PlaylistNewComponent]
+    directives: [CORE_DIRECTIVES, PlaylistNewComponent],
+    providers: [PlaylistService]
 })
-export class PlaylistListComponent {
+export class PlaylistListComponent implements OnInit {
 
     private list: Playlist[];
 
-    constructor() {
-        let list = [];
+    constructor(private _playlistService: PlaylistService) {
+        this.list = [];
+    }
 
-        for (let i = 0; i < 5; i++) {
-            let playlist = new Playlist('p' + i, 'Playlist ' + i);
+    ngOnInit() {
+        this.loadData();
+    }
 
-            list.push(playlist);
-            for (let t = 0; t < 11; t++) {
-                let track = new Track('t' + t, 'Track ' + t);
-                playlist.trackList.push(track);
-            }
-        }
-        this.list = list;
+    loadData() {
+        this._playlistService.getAll().then(list => this.list = list);
     }
 
     onCreatedNew(playlist: Playlist) {

@@ -13,7 +13,7 @@
                 <ul class="list-group">
                     <li *ngFor="#playlist of list; #i=index" class="list-group-item">
                         <span class="badge">{{playlist.trackList.length}}</span>
-                        <label>{{playlist.name}}</label>
+                        <label>({{playlist.id}})&nbsp;{{playlist.name}}</label>
                     </li>
                 </ul>
             </div>

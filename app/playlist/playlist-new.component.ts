@@ -1,11 +1,13 @@
 import { Component, Output, EventEmitter} from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { Playlist } from '../model/playlist.model';
+import { PlaylistService } from './playlist.service';
 
 @Component({
     selector: 'playlist-new',
     templateUrl: 'app/playlist/playlist-new.html',
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
+    providers: [PlaylistService]
 })
 
 export class PlaylistNewComponent {
@@ -13,12 +15,14 @@ export class PlaylistNewComponent {
 
     @Output() onCreated = new EventEmitter<Playlist>();
 
-    constructor() {
+    constructor(private _playlistService: PlaylistService) {
         this.playlist = new Playlist(null, null);
     }
 
     save () {
-        console.log('opslaan');
+
+        this._playlistService.save(this.playlist);
+
         this.onCreated.emit(this.playlist);
     }
 }
