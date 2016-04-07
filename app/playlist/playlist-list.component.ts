@@ -26,10 +26,11 @@ export class PlaylistListComponent {
                 playlist.trackList.push(track);
             }
         }
-
-
-
-
         this.list = list;
     }
+
+    onCreatedNew(playlist: Playlist) {
+        this.list.push(playlist);
+    }
+
 }

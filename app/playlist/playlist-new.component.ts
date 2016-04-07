@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component, Output, EventEmitter} from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { Playlist } from '../model/playlist.model';
 
@@ -11,11 +11,14 @@ import { Playlist } from '../model/playlist.model';
 export class PlaylistNewComponent {
     public playlist: Playlist;
 
+    @Output() onCreated = new EventEmitter<Playlist>();
+
     constructor() {
         this.playlist = new Playlist(null, null);
     }
 
     save () {
         console.log('opslaan');
+        this.onCreated.emit(this.playlist);
     }
 }
