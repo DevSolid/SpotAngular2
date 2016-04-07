@@ -23,22 +23,22 @@ export class PlaylistListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.loadData();
+    }
+
+    loadData() {
         this.userData = this._sessionService.getUserData();
         this.list = this.userData.playlistList;
     }
 
     onCreatedNew(playlist: Playlist) {
         this.list.push(playlist);
+        this.save();
     }
 
     save() {
         this.userData.playlistList = this.list;
         this._sessionService.setUserData(this.userData);
     }
-
-    load() {
-        this.userData = this._sessionService.getUserData();
-        this.list = this.userData.playlistList;
-    }
-
 }
+
