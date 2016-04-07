@@ -10,4 +10,12 @@ import { Playlist } from '../model/playlist.model';
 
 export class PlaylistNewComponent {
     public playlist: Playlist;
+
+    constructor() {
+        this.playlist = new Playlist(null, null);
+    }
+
+    save () {
+        console.log('opslaan');
+    }
 }

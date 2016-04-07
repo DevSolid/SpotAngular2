@@ -1,12 +1,14 @@
 import { Component } from 'angular2/core';
 import { CORE_DIRECTIVES} from 'angular2/common';
+
+import { PlaylistNewComponent } from './playlist-new.component';
 import { Playlist} from './../model/playlist.model';
 import { Track} from './../model/track.model';
 
 @Component({
     selector: 'playlist-list',
     templateUrl: 'app/playlist/playlist-list.html',
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, PlaylistNewComponent]
 })
 export class PlaylistListComponent {
 
