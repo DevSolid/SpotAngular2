@@ -1,9 +1,9 @@
 {
-  "name": "angular2-starter",
-  "description": "Angular 2 Starter",
+  "name": "SpotAngular2",
+  "description": "Angular 2 application, based on Angular 2 Starter",
   "main": "index.js",
   "authors": [
-    "Antony Budianto <antonybudianto@gmail.com>"
+    "Svend-Aage Nielsen <info@devsolid.net>"
   ],
   "license": "ISC",
   "moduleType": [],
